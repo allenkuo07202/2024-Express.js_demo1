@@ -3,7 +3,19 @@ const express = require("express"); // 引入從npm下載的express module，
 const app = express();
 // express其實是個function，執行express後會return一個object
 
-// app其實就是我們的伺服器，兩個參數port, callback function
+// console.log(app);
+// HTTP request常見的有4種：GET, POST, PUT, DELETE，app會根據request的種類來判斷如何應對
+// 而http request的種類已經寫在header裡面，會自動去抓到
+
+// app其實就是代表我們的伺服器，兩個參數port, callback function
+app.get("/", (req, res) => {
+  res.send("歡迎來到網站首頁");
+});
+
+app.get("/anotherPage", (req, res) => {
+  res.send("歡迎來到另一個頁面");
+});
+
 app.listen(3000, () => {
   console.log("伺服器正在聆聽port 3000....");
 });
