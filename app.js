@@ -11,6 +11,14 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
+app.get("*", (req, res) => {
+  // res.status(404);
+  // // res.status()會自動return res object(method chaining)，所以這兩行可以寫在一起
+  // res.send("錯誤頁面...");
+  // // res.send()的status code預設是200，因為就是接受client端的請求，才會回應
+  res.status(404).send("錯誤頁面...");
+});
+
 app.listen(3000, () => {
   console.log("伺服器正在聆聽port 3000....");
 });
