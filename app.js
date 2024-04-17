@@ -8,8 +8,12 @@ app.use(express.static("public"));
 
 app.set("view engine", "ejs");
 app.get("/", (req, res) => {
-  let myString = "<h1>hello world</h1>";
-  res.render("index", { myString });
+  res.render("index");
+});
+
+app.get("/example", (req, res) => {
+  let { name, age } = req.query;
+  res.render("response", { name, age });
 });
 
 app.listen(3000, () => {
